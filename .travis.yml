@@ -20,4 +20,4 @@ script:
 - ant
 
 after_script:
-  - php vendor/bin/coveralls
+  - php bin/coveralls
