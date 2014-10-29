@@ -206,7 +206,8 @@
     </target>
 
     <target name="startphpserver">
-        <exec executable="${basedir}/phpserver.sh" failonerror="true" dir="${basedir}">
+        <exec executable="/bin/sh" failonerror="true" dir="${basedir}">
+            <arg value="phpserver.sh" />
             <arg value="start" />
         </exec>
     </target>
@@ -220,7 +221,8 @@
 
     <target name="stopphpserver"
             depends="startphpserver">
-        <exec executable="${basedir}/phpserver.sh" failonerror="true" dir="${basedir}">
+        <exec executable="/bin/sh" failonerror="true" dir="${basedir}">
+            <arg value="phpserver.sh" />
             <arg value="stop" />
         </exec>
     </target>
