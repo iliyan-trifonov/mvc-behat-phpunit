@@ -1,6 +1,9 @@
 Custom MVC App with Users and Notepads tested with Behat/Mink and PHPUnit+Mockery
 ===
 
+[![Build Status](https://travis-ci.org/iliyan-trifonov/mvc-behat-phpunit.svg?branch=master)](https://travis-ci.org/iliyan-trifonov/mvc-behat-phpunit)
+[![Coverage Status](https://img.shields.io/coveralls/iliyan-trifonov/mvc-behat-phpunit.svg)](https://coveralls.io/r/iliyan-trifonov/mvc-behat-phpunit)
+
 I wanted first to create this small real world project and use it as a template later for making the same but with
 TDD and BDD tests in mind. I expect the tests to be a little different when approached that way.
 
