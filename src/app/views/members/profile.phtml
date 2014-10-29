@@ -1,0 +1,22 @@
+<?php if (isset($message)): ?>
+    <?=$message?><br/><br/>
+<?php endif ?>
+<form method="post" action="/profile">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="username" value="<?=$user->username?>"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" value="<?=$user->password?>"></td>
+        </tr>
+        <tr>
+            <td>Password confirm:</td>
+            <td><input type="password" name="passwordconfirm" value="<?=$user->password?>"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="submit" value="Update"></td>
+        </tr>
+    </table>
+</form>

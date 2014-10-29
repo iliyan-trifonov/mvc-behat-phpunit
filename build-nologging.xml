@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MVC_Behat_PHPUnit_Mockery" default="build">
+    <!-- By default, we assume all tools to be on the $PATH -->
+    <property name="toolsdir" value=""/>
+
+    <!-- Uncomment the following when the tools are in ${basedir}/vendor/bin -->
+    <!-- <property name="toolsdir" value="${basedir}/vendor/bin/"/> -->
+
+    <target name="build"
+            depends="prepare,vendors,lint,phpunit,behat,stopphpserver,phpcompatinfo"
+            description=""/>
+
+    <target name="prepare"
+            unless="prepare.done"
+            description="Prepare for build">
+        <exec executable="php" failonerror="true">
+            <arg value="${basedir}/src/scripts/build_test_db.php"/>
+        </exec>
+        <property name="prepare.done" value="true"/>
+    </target>
+
+    <target name="vendors" description="Add Vendors">
+        <exec executable="php" failonerror="true">
+            <arg value='/usr/local/bin/composer' />
+            <arg value='update' />
+            <arg value='--dev' />
+            <arg value='--prefer-dist' />
+        </exec>
+    </target>
+
+    <target name="lint" description="Perform syntax check of sourcecode files">
+        <apply executable="php" failonerror="true">
+            <arg value="-l" />
+
+            <fileset dir="${basedir}/src">
+                <include name="**/*.php" />
+                <modified />
+            </fileset>
+
+            <fileset dir="${basedir}/tests">
+                <include name="**/*.php" />
+                <modified />
+            </fileset>
+        </apply>
+    </target>
+
+    <target name="phploc"
+            description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
+        <exec executable="${toolsdir}phploc">
+            <arg value="--count-tests" />
+            <arg path="${basedir}/src" />
+            <arg path="${basedir}/tests" />
+        </exec>
+    </target>
+
+    <target name="phpmd"
+            description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${toolsdir}phpmd">
+            <arg path="${basedir}/src" />
+        </exec>
+    </target>
+
+    <target name="phpcs"
+            description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${toolsdir}phpcs">
+            <arg value="--standard=PSR2" />
+            <arg value="--extensions=php" />
+            <arg value="--ignore=autoload.php" />
+            <arg path="${basedir}/src" />
+            <arg path="${basedir}/tests" />
+        </exec>
+    </target>
+
+    <target name="phpcpd"
+            description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${toolsdir}phpcpd">
+            <arg path="${basedir}/src" />
+        </exec>
+    </target>
+
+    <target name="phpunit"
+            depends="prepare"
+            description="Run unit tests with PHPUnit">
+        <exec executable="${toolsdir}phpunit" failonerror="true">
+            <arg value="--configuration"/>
+            <arg path="${basedir}/build/phpunit-nologging.xml"/>
+        </exec>
+    </target>
+
+    <target name="startphpserver">
+        <exec executable="${basedir}/phpserver.sh" failonerror="true" dir="${basedir}">
+            <arg value="start" />
+        </exec>
+    </target>
+
+    <target name="behat" description="Run tests with Behat" depends="startphpserver">
+        <exec executable="${basedir}/bin/behat" failonerror="true">
+            <arg value="--tags" />
+            <arg value="@jenkins_remote" />
+        </exec>
+    </target>
+
+    <target name="stopphpserver"
+            depends="startphpserver">
+        <exec executable="${basedir}/phpserver.sh" failonerror="true" dir="${basedir}">
+            <arg value="stop" />
+        </exec>
+    </target>
+
+    <target name="phpcompatinfo">
+        <echo message="phpcompatinfo: Checking src/"/>
+        <exec executable="${basedir}/bin/phpcompatinfo" dir="${basedir}">
+            <arg value="analyser:run"/>
+            <arg value="src/"/>
+        </exec>
+        <echo message="phpcompatinfo: Checking tests/"/>
+        <exec executable="${basedir}/bin/phpcompatinfo" dir="${basedir}">
+            <arg value="analyser:run"/>
+            <arg value="tests/"/>
+        </exec>
+    </target>
+
+</project>

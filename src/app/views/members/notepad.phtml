@@ -1,0 +1,18 @@
+<?php if (isset($message)): ?>
+    <?=$message?><br/><br/>
+<?php endif ?>
+<form class="notepadform" method="post" action="/notepad<?=($notepad->id ? "/".$notepad->id : "")?>">
+    <table>
+        <tr>
+            <td>Name: </td>
+            <td><input type="text" class="notepadname" name="name" value="<?=$notepad->name?>"></td>
+        </tr>
+        <tr>
+            <td valign="top">Text: </td>
+            <td><textarea class="notepadtext" name="text"><?=$notepad->text?></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="submit" value="<?=$submitBtnText?>"></td>
+        </tr>
+    </table>
+</form>

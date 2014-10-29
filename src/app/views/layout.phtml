@@ -1,0 +1,9 @@
+<link type="text/css" rel="stylesheet" href="/css/styles.css">
+<script type="text/javascript" src="/js/common.js"></script>
+<?php if ($loggedIn): ?>
+    <a href="/dashboard">Dashboard</a> | <a href="/profile">Profile</a> | <a href="/logout">Logout</a>
+<?php else: ?>
+    <a href="/">Home</a> | <a href="/register">Register</a> | <a href="/login">Login</a>
+<?php endif ?>
+<br/><br/>
+<?=$content?>

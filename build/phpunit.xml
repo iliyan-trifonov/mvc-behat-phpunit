@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="../tests/bootstrap.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         strict="true"
+         verbose="true">
+
+<testsuites>
+    <testsuite name="MVC_Behat_PHPUnit_Mockery">
+        <directory suffix="Test.php">../tests/</directory>
+        <exclude>../vendor</exclude>
+    </testsuite>
+</testsuites>
+
+<logging>
+    <log type="coverage-html" target="coverage"/>
+    <log type="coverage-xml" target="coverage/xml"/>
+    <log type="coverage-clover" target="logs/clover.xml"/>
+    <log type="coverage-crap4j" target="logs/crap4j.xml"/>
+    <log type="junit" target="logs/junit.xml" logIncompleteSkipped="false"/>
+</logging>
+
+<filter>
+    <blacklist>
+        <directory>../vendor</directory>
+    </blacklist>
+    <whitelist addUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">../src/app/</directory>
+        <exclude>
+            <file>../src/bootstrap.php</file>
+            <file>../src/app/autoload.php</file>
+        </exclude>
+    </whitelist>
+</filter>
+</phpunit>

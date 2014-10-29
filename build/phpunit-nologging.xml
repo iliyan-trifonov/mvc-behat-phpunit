@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="../tests/bootstrap.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         strict="true"
+         verbose="true">
+
+<testsuites>
+    <testsuite name="MVC_Behat_PHPUnit_Mockery">
+        <directory suffix="Test.php">../tests/</directory>
+        <exclude>../vendor</exclude>
+    </testsuite>
+</testsuites>
+
+<filter>
+    <blacklist>
+        <directory>../vendor</directory>
+    </blacklist>
+    <whitelist addUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">../src/app/</directory>
+        <exclude>
+            <file>../src/bootstrap.php</file>
+            <file>../src/app/autoload.php</file>
+        </exclude>
+    </whitelist>
+</filter>
+</phpunit>

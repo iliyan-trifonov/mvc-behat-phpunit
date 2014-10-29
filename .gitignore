@@ -1,0 +1,13 @@
+.idea/
+bin/
+vendor/
+composer.lock
+data/*.sq3
+build/api
+build/coverage
+build/logs
+build/pdepend
+build/phpdox
+cache.properties
+phpserver.pid
+phpserver.log

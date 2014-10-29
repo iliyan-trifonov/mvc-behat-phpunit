@@ -1,0 +1,18 @@
+<h3>Welcome to the Members Area!</h3>
+
+Notepads:<br/>
+<br/>
+<a href="/notepad">Add new</a><br/><br/>
+<?php foreach ($notepads as $notepad): ?>
+    <div class="notepad">
+        <span><?=$notepad->name?></span>
+        <p><?=$notepad->text?></p>
+        <span class="links">
+            <a href="/notepad/<?=$notepad->id?>"
+               title="Edit '<?=$notepad->name?>'">Edit</a> |
+            <a href="/delete/<?=$notepad->id?>"
+               title="Delete '<?=$notepad->name?>'"
+               onclick="return confirmDeleteNotepad()">Delete</a>
+        </span>
+    </div>
+<?php endforeach ?>

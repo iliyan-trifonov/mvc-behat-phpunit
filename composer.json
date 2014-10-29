@@ -1,0 +1,22 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "~4.3",
+        "squizlabs/php_codesniffer": "~1.5",
+        "phploc/phploc": "*",
+        "pdepend/pdepend" : "2.0.3",
+        "phpmd/phpmd" : "~2.1",
+        "sebastian/phpcpd": "*",
+        "theseer/phpdox": "*",
+        "mockery/mockery": "0.9.*@dev",
+        "behat/behat": "~3.0",
+        "behat/mink": "~1.6",
+        "behat/mink-extension": "~2.0",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*",
+        "guzzle/http": "*",
+        "bartlett/php-compatinfo": "~3.5"
+    },
+    "config": {
+        "bin-dir": "bin/"
+    }
+}
