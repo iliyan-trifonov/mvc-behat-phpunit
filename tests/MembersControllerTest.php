@@ -296,12 +296,12 @@ class MembersControllerTest extends BaseTestClass
             ->andReturn($user);
         $name = "test name 1";
         $text = "test text 1";
-        $notepad = new Notepad([
+        $notepad = new Notepad(array(
             "id" => 1,
             "userid" => $user->id,
             "name" => $name,
             "text" => $text
-        ]);
+        ));
         $this->requestMock
             ->shouldReceive("post")
                 ->with("name")
@@ -363,12 +363,12 @@ class MembersControllerTest extends BaseTestClass
             ->andReturn($user);
         $name = "test name 1";
         $text = "test text 1";
-        $notepad = new Notepad([
+        $notepad = new Notepad(array(
             "id" => 1,
             "userid" => $user->id,
             "name" => $name,
             "text" => $text
-        ]);
+        ));
         $this->requestMock
             ->shouldReceive("post")
                 ->with("name")
