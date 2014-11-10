@@ -71,7 +71,8 @@ class TemplateTest extends BaseTestClass
         $file =  "nofile.phtml";
         $fullPath = $path . "/" . $file;
             $this->setExpectedException("\\InvalidArgumentException", "Invalid layout file path: '$fullPath'");
-        (new Template($path, $controller))->setLayout($file);
+        $template = new Template($path, $controller);
+        $template->setLayout($file);
     }
 
     public function testWrongTemplateFileGiven()
@@ -81,6 +82,7 @@ class TemplateTest extends BaseTestClass
         $file =  "nofile.phtml";
         $fullPath = $path . "/" . lcfirst($controller) . "/" . $file;
             $this->setExpectedException("\\InvalidArgumentException", "Invalid template file path: '$fullPath'");
-        (new Template($path, $controller))->setTemplate($file);
+        $template = new Template($path, $controller);
+        $template->setTemplate($file);
     }
 }
