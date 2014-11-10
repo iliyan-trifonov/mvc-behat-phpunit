@@ -59,7 +59,8 @@ class FeatureContext extends MinkContext
     {
         $result = $this->userService->register($username, $password, $password);
         if (!$result) {
-            $this->registerError = $this->userService->getErrors()[0];
+            $errors = $this->userService->getErrors();
+            $this->registerError = $errors[0];
             //echo "iRegisterANewUserWithNameAndPassword(): result is FALSE, error = {$this->registerError}\n";
             return false;
         }

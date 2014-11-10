@@ -24,7 +24,7 @@
             <arg value='/usr/local/bin/composer' />
             <arg value='update' />
             <arg value='--dev' />
-            <arg value='--prefer-dist' />
+            <arg value='--prefer-source' />
         </exec>
     </target>
 
