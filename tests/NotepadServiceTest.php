@@ -76,7 +76,8 @@ class NotepadServiceTest extends BaseTestClass
     public function testFindOneReturnsAnErrorOnNotEnoughParams()
     {
         $this->assertFalse($this->service->findOne(new Notepad(array())));
-        $this->assertEquals("Not enough data!", $this->service->getErrors()[0]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Not enough data!", $errors[0]);
     }
 
     public function testSaveNotepadWithGoodData()
@@ -102,7 +103,8 @@ class NotepadServiceTest extends BaseTestClass
             "text" => "test text 1",
         ));
         $this->assertFalse($this->service->save($notepad));
-        $this->assertEquals("Invalid Notepad params!", $this->service->getErrors()[0]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Invalid Notepad params!", $errors[0]);
         //for update but no userid is given
         $notepad = new Notepad(array(
             "id" => 1,
@@ -110,7 +112,8 @@ class NotepadServiceTest extends BaseTestClass
             "text" => "test text 1",
         ));
         $this->assertFalse($this->service->save($notepad));
-        $this->assertEquals("Invalid Notepad params!", $this->service->getErrors()[1]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Invalid Notepad params!", $errors[1]);
     }
 
     public function testSanitizeAGoodText()
@@ -177,6 +180,7 @@ class NotepadServiceTest extends BaseTestClass
         $notepadId = -1;
         $this->assertFalse($this->service->delete($notepadId));
         $this->assertNotEmpty($this->service->getErrors());
-        $this->assertEquals("Invalid id '$notepadId' given!", $this->service->getErrors()[0]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Invalid id '$notepadId' given!", $errors[0]);
     }
 }

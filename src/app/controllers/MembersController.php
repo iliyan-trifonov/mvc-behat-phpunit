@@ -95,8 +95,9 @@ class MembersController extends BaseController
                     "text" => ""
                 ));
             } else {
+                $errors = $service->getErrors();
                 $message = "Could not save the Notepad!<br/>Error message: "
-                    . $service->getErrors()[0];
+                    . $errors[0];
                 $notepad = new Notepad(array(
                     "name" => $this->request->post("name"),
                     "text" => $this->request->post("text")

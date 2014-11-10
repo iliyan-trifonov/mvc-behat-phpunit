@@ -118,7 +118,7 @@ class UserService
     public function userIsLoggedIn()
     {
         if ($user = $this->session->getUser()) {
-            return boolval($this->mapper->findOne($user));
+            return (bool) $this->mapper->findOne($user);
         }
         return false;
     }

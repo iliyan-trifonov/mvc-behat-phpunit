@@ -88,33 +88,41 @@ class UserServiceTest extends BaseTestClass
             ->andReturn($this->user);
         //wrong params:
         $this->assertFalse($this->service->register($this->username, $this->password, $this->password . "::diff"));
-        $this->assertEquals("Passwords do not match!", $this->service->getErrors()[0]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Passwords do not match!", $errors[0]);
         //
         $this->assertFalse($this->service->register("123 " . $this->username, $this->password, $this->password));
-        $this->assertEquals("Invalid username or password!", $this->service->getErrors()[1]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Invalid username or password!", $errors[1]);
         //
         $this->assertFalse($this->service->register($this->username, "as", "as"));
-        $this->assertEquals("Invalid username or password!", $this->service->getErrors()[2]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Invalid username or password!", $errors[2]);
         //user exists:
         $this->assertFalse($this->service->register($this->username, $this->password, $this->password));
-        $this->assertEquals("User already exists!", $this->service->getErrors()[3]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("User already exists!", $errors[3]);
     }
 
     public function testAuthErrors()
     {
         $username = "1asf";
         $this->assertFalse($this->service->authenticate($username, "testpassword1"));
-        $this->assertEquals("Invalid username '$username' given!", $this->service->getErrors()[0]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Invalid username '$username' given!", $errors[0]);
         //
         $this->mapper->shouldReceive("findOne")
             ->with($this->userMock)
             ->andReturn(false);
         $this->assertFalse($this->service->authenticate("", $this->password));
-        $this->assertEquals("No username or password given!", $this->service->getErrors()[1]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("No username or password given!", $errors[1]);
         $this->assertFalse($this->service->authenticate($this->username, ""));
-        $this->assertEquals("No username or password given!", $this->service->getErrors()[2]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("No username or password given!", $errors[2]);
         $this->assertFalse($this->service->authenticate($this->username, $this->password));
-        $this->assertEquals("Wrong user!", $this->service->getErrors()[3]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("Wrong user!", $errors[3]);
     }
 
     public function testAuthWithGoodParams()
@@ -202,7 +210,8 @@ class UserServiceTest extends BaseTestClass
             ->with($newUserMock)
             ->andReturn($newUser);
         $this->assertFalse($this->service->updateUser($newusername, $user->password, $user->password));
-        $this->assertEquals("User with that name exists!", $this->service->getErrors()[0]);
+        $errors = $this->service->getErrors();
+        $this->assertEquals("User with that name exists!", $errors[0]);
     }
 
     public function testUpdateUserSuccessfullyWithGoodParams()
