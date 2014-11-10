@@ -17,7 +17,7 @@ Requirements
 
 You only need PHP CLI to work with and test this application.
 
-The PHP version should be at least 5.4.0.
+The PHP version should be at least ~5.4.
 
 The PHP extentsions used are: sqlite xsl curl xdebug.
 
