@@ -14,12 +14,13 @@ matrix:
     - php: hhvm-nightly
 
 before_install:
-  sudo pip install codecov
-after_success:
-  codecov
+- sudo pip install codecov
 
 script:
 - ant
 
+after_success:
+
 after_script:
   - php bin/coveralls
+  - codecov
