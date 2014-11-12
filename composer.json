@@ -1,4 +1,15 @@
 {
+    "name": "iliyan/mvc-behat-phpunit",
+    "description": "Custom MVC App with Users and Notepads tested with Behat/Mink and PHPUnit+Mockery",
+    "keywords": ["php","mvc","behat","mink","phpunit","mockery"],
+    "homepage": "https://github.com/iliyan-trifonov/mvc-behat-phpunit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Iliyan Trifonov",
+            "email": "iliyan.trifonov@gmail.com"
+        }
+    ],
     "require-dev": {
         "phpunit/phpunit": "~4.3",
         "squizlabs/php_codesniffer": "~1.5",
