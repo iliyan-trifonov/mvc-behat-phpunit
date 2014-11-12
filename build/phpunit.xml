@@ -3,6 +3,7 @@
          backupGlobals="false"
          backupStaticAttributes="false"
          strict="true"
+         colors="true"
          verbose="true">
 
 <testsuites>
@@ -13,6 +14,7 @@
 </testsuites>
 
 <logging>
+    <log type="coverage-text" target="php://stdout"/>
     <log type="coverage-html" target="coverage"/>
     <log type="coverage-xml" target="coverage/xml"/>
     <log type="coverage-clover" target="logs/clover.xml"/>

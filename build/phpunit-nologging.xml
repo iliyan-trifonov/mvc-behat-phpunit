@@ -3,6 +3,7 @@
          backupGlobals="false"
          backupStaticAttributes="false"
          strict="true"
+         colors="true"
          verbose="true">
 
 <testsuites>
@@ -11,6 +12,10 @@
         <exclude>../vendor</exclude>
     </testsuite>
 </testsuites>
+
+<logging>
+    <log type="coverage-text" target="php://stdout"/>
+</logging>
 
 <filter>
     <blacklist>
