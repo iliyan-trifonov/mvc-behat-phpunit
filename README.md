@@ -6,6 +6,7 @@ Custom MVC App with Users and Notepads tested with Behat/Mink and PHPUnit+Mocker
 
 [![Build Status](https://api.shippable.com/projects/54637ba0c6f0803064f43dab/badge?branchName=master)](https://app.shippable.com/projects/54637ba0c6f0803064f43dab/builds/latest)
 [![Build Status](https://drone.io/github.com/iliyan-trifonov/mvc-behat-phpunit/status.png)](https://drone.io/github.com/iliyan-trifonov/mvc-behat-phpunit/latest)
+[ ![Codeship Status for iliyan-trifonov/mvc-behat-phpunit](https://codeship.com/projects/fdd76750-4cb3-0132-5fa7-4a214f75c8af/status)](https://codeship.com/projects/47201)
 
 I wanted first to create this small real world project and use it as a template later for making the same but with
 TDD and BDD tests in mind. I expect the tests to be a little different when approached that way.
