@@ -19,8 +19,6 @@ before_install:
 script:
 - ant
 
-after_success:
-
 after_script:
   - php bin/coveralls
   - codecov
