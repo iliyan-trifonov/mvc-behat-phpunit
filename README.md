@@ -35,6 +35,8 @@ The instaclick/php-webdriver needs the curl extension.
 
 A phpunit test(and probably the coverage creation) needs the xdebug extension.
 
+All php testing tools required by the Jenkins configuration are downloaded with Composer and called from projroot/bin.
+
 
 Try the application.
 ---
