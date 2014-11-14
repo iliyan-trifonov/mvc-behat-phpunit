@@ -3,6 +3,7 @@ Custom MVC App with Users and Notepads tested with Behat/Mink and PHPUnit+Mocker
 
 [![Build Status](https://travis-ci.org/iliyan-trifonov/mvc-behat-phpunit.svg?branch=master)](https://travis-ci.org/iliyan-trifonov/mvc-behat-phpunit)
 [![Coverage Status](https://img.shields.io/coveralls/iliyan-trifonov/mvc-behat-phpunit.svg)](https://coveralls.io/r/iliyan-trifonov/mvc-behat-phpunit)
+[![Dependency Status](https://www.versioneye.com/user/projects/54632144899e835b3000006b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54632144899e835b3000006b)
 
 [![Build Status](https://api.shippable.com/projects/54637ba0c6f0803064f43dab/badge?branchName=master)](https://app.shippable.com/projects/54637ba0c6f0803064f43dab/builds/latest)
 [![Build Status](https://drone.io/github.com/iliyan-trifonov/mvc-behat-phpunit/status.png)](https://drone.io/github.com/iliyan-trifonov/mvc-behat-phpunit/latest)
