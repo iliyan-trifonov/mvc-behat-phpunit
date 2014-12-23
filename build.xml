@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="MVC_Behat_PHPUnit_Mockery" default="build">
-    <!-- By default, we assume all tools to be on the $PATH -->
-    <!--<property name="toolsdir" value=""/>-->
-
-    <!-- Uncomment the following when the tools are in ${basedir}/vendor/bin -->
-    <!-- <property name="toolsdir" value="${basedir}/vendor/bin/"/> -->
     <property name="toolsdir" value="${basedir}/bin/"/>
 
     <target name="build"
-            depends="prepare,installcomposer,vendors,check-behatexec,lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit,behat,stopphpserver,phpcompatinfo,phpdox"
+            depends="prepare,installcomposer,vendors,check-behatexec,lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit,behat,stopphpserver,phpcompatinfo,phpmetrics,phpdox"
             description=""/>
 
     <target name="build-parallel"
@@ -35,7 +30,9 @@
         <delete dir="${basedir}/build/logs"/>
         <delete dir="${basedir}/build/pdepend"/>
         <delete dir="${basedir}/build/phpdox"/>
+        <delete file="${basedir}/build/phpmetrics.html"/>
         <delete file="${basedir}/bin/composer"/>
+        <delete file="${basedir}/bin/phpmetrics"/>
         <delete file="${basedir}/data/test.db"/>
         <property name="clean.done" value="true"/>
     </target>
@@ -237,6 +234,17 @@
         <exec executable="${basedir}/bin/phpcompatinfo" dir="${basedir}">
             <arg value="analyser:run"/>
             <arg value="tests/"/>
+        </exec>
+    </target>
+
+    <target name="phpmetrics">
+        <exec executable="/bin/bash" failonerror="true">
+            <arg value="-c" />
+            <arg value="curl -L https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar -o ${basedir}/bin/phpmetrics; chmod +x ${basedir}/bin/phpmetrics" />
+        </exec>
+        <exec executable="${basedir}/bin/phpmetrics" dir="${basedir}">
+            <arg value="--report-html=${basedir}/build/phpmetrics.html"/>
+            <arg value="src/"/>
         </exec>
     </target>
 
