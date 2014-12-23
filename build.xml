@@ -244,6 +244,7 @@
         </exec>
         <exec executable="${basedir}/bin/phpmetrics" dir="${basedir}">
             <arg value="--report-html=${basedir}/build/phpmetrics.html"/>
+            <arg value="--report-xml=${basedir}/build/phpmetrics.xml"/>
             <arg value="src/"/>
         </exec>
     </target>
