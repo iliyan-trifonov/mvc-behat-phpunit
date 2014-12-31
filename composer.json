@@ -12,9 +12,9 @@
     ],
     "require-dev": {
         "phpunit/phpunit": "~4.3",
-        "squizlabs/php_codesniffer": "~1.5",
+        "squizlabs/php_codesniffer": "~2.",
         "phploc/phploc": "*",
-        "pdepend/pdepend" : "2.0.3",
+        "pdepend/pdepend" : "~2.",
         "phpmd/phpmd" : "~2.1",
         "sebastian/phpcpd": "*",
         "theseer/phpdox": "*",
