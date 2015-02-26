@@ -1,7 +1,6 @@
 <?php
-/**
- * @codingStandardsIgnoreFile
- */
+
+// @codingStandardsIgnoreFile
 
 //index.php is the bootstrap file
 
