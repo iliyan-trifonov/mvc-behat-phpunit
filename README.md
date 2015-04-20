@@ -1,4 +1,4 @@
-Custom MVC App with Users and Notepads tested with Behat/Mink and PHPUnit+Mockery
+### Custom MVC App with Users and Notepads tested with Behat/Mink and PHPUnit+Mockery
 ===
 
 [![Build Status](https://travis-ci.org/iliyan-trifonov/mvc-behat-phpunit.svg?branch=master)](https://travis-ci.org/iliyan-trifonov/mvc-behat-phpunit)
