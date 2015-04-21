@@ -11,3 +11,5 @@ build/phpdox
 cache.properties
 phpserver.pid
 phpserver.log
+build/phpmetrics.*
+src/data/test.sq3
