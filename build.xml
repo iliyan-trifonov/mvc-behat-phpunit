@@ -3,7 +3,7 @@
     <property name="toolsdir" value="${basedir}/bin/"/>
 
     <target name="build"
-            depends="prepare,installcomposer,vendors,check-behatexec,lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit,behat,stopphpserver,phpcompatinfo,phpmetrics,phpdox"
+            depends="prepare,installcomposer,vendors,check-behatexec,addbehatnestinglevel,lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit,behat,stopphpserver,phpcompatinfo,phpmetrics,phpdox"
             description=""/>
 
     <target name="build-parallel"
@@ -79,6 +79,13 @@
             <arg value="ln -s ${basedir}/vendor/behat/behat/bin/behat ${basedir}/bin/behat"/>
         </exec>
         <echo message="Made a symlink to behat in ${basedir}/bin/"/>
+    </target>
+
+    <target name="addbehatnestinglevel" depends="vendors">
+        <exec executable="/bin/bash" failonerror="true">
+            <arg value="build/addbehatnestinglevel.sh"/>
+        </exec>
+        <echo message="Added max nesting level php ini setting in ${basedir}/bin/behat"/>
     </target>
 
     <target name="lint" description="Perform syntax check of sourcecode files">
